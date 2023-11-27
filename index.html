@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+</head>
+<script>
+    //  function onPress(){
+    //     fetch("http://localhost:3000/todos",{
+    //         method : "GET"
+    //     }).then((resp)=>{
+    //         resp.json().then((data)=>{
+    //             console.log(data)
+    //         })
+    //     })
+    // }
+    function onPress(){
+
+        var title = document.getElementById("title").value;
+        var description = document.getElementById("desc").value;
+
+        fetch("http://localhost:3000/todos",{
+            method : "POST",
+            body: JSON.stringify({
+                "title" : title,
+                "description" : description 
+            }),
+            headers :{
+                "Content-Type" : "application/json",
+            }
+        }).then((resp)=>{
+            resp.json().then((data)=>{
+                console.log(data)
+            })
+        })
+    }
+</script>
+<body>
+    Todo Title
+    <input type="text" id="title"></input>
+    <br></br>
+    Todo Description
+    <input type="text" id="desc"></input>
+    <br></br>
+    <button onclick="onPress()">send ToDo</button>
+</body>
+</html>

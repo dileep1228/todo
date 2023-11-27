@@ -2,13 +2,14 @@
 // import bodyParser from 'body-parser';
 
 const express = require('express');
-
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express()
 const port = 3000
 
 app.use(bodyParser.json());
+app.use(cors());
 
 let todos = [];
 
@@ -53,7 +54,7 @@ app.post('/todos', (req, res)=> {
     }
 
     todos.push(newTodo);
-    res.status(201).send( " todo uploded");
+    res.status(201).json( " todo uploded");
 })
 
 // 4. PUT /todos/:id - Update an existing todo item by ID
