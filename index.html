@@ -6,15 +6,19 @@
     <title>TODO</title>
 </head>
 <script>
-    //  function onPress(){
-    //     fetch("http://localhost:3000/todos",{
-    //         method : "GET"
-    //     }).then((resp)=>{
-    //         resp.json().then((data)=>{
-    //             console.log(data)
-    //         })
-    //     })
-    // }
+     function getData(){
+        fetch("http://localhost:3000/todos",{
+            method : "GET"
+        }).then((resp)=>{
+            resp.json().then((data)=>{
+                var parentElement = document.getElementById("mainArea");
+                parentElement.innerHTML = JSON.stringify(data);
+                console.log(data)
+            })
+        })
+    }
+
+    getData();
     function onPress(){
 
         var title = document.getElementById("title").value;
@@ -44,5 +48,9 @@
     <input type="text" id="desc"></input>
     <br></br>
     <button onclick="onPress()">send ToDo</button>
+
+    <div id="mainArea">
+
+    </div>
 </body>
 </html>

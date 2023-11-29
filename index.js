@@ -54,7 +54,7 @@ app.post('/todos', (req, res)=> {
     }
 
     todos.push(newTodo);
-    res.status(201).json( " todo uploded");
+    res.status(201).json(todos);
 })
 
 // 4. PUT /todos/:id - Update an existing todo item by ID
